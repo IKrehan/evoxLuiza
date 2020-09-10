@@ -1,3 +1,7 @@
 .searchBar {
     margin-top: -2%;
 }
+
+.searchInput {
+    border: none !important;
+}

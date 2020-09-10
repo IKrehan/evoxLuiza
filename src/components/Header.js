@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
+import EvoxLogo from './logo.svg'
 
 import Container from 'react-bootstrap/Container';
 
@@ -9,9 +10,7 @@ export default class Header extends Component {
         return (
             <header>
                 <Container className='py-5'>
-                    <h1>
-                        <b>evox</b> News
-                    </h1>
+                    <img src={EvoxLogo} alt="Evox Logo"/>
                 </Container>
             </header>
         );
