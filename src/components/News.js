@@ -5,12 +5,45 @@ import Container from 'react-bootstrap/Container';
 
 
 export default class News extends Component {
+
+    state = {
+        isLoaded: false,
+        articles: null
+    }
+
+    async componentDidMount() {
+        let search_value = "tech";
+        let url = `http://newsapi.org/v2/top-headlines?q=${search_value}&sortBy=publishedAt&pageSize=5&page=1&apiKey=83c78226acad413893294f74e8011e96`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({ articles: data.articles, isLoaded: true });
+    }
+
     render() {
-        return (
-            <div className="news mt-5">
-                <NewsCard title="COVID-19 | Abandono entre doses pode levar vacina a não funcionar no Brasil - Canaltech" urlToImage="https://timeline.canaltech.com.br/356155.700/covid-19-abandono-entre-doses-pode-levar-vacina-a-nao-funcionar-no-brasil-171219.jpg" url="https://canaltech.com.br/saude/covid-19-abandono-entre-doses-pode-levar-vacina-a-nao-funcionar-no-brasil-171219/" publisher="Canaltech.com.br" publishedAt="2020-09-09" />
-            </div>
-            
-        );
+        if (this.state.isLoaded) {
+            return (
+                <div className="news mt-5">
+                    {this.state.articles.map(article => (
+                        <NewsCard 
+                        title={article.title} 
+                        urlToImage={article.urlToImage} 
+                        url={article.url}
+                        publishedAt={article.publishedAt}
+                        publisher={article.source.name}
+                    />
+                    ))};
+                </div>
+                
+            );
+        }
+        else {
+            return (
+                <div className="news mt-5">
+                    <h3 className="mx-auto">Loading...</h3>
+                </div>  
+            );
+        }
+        
     }
 }
