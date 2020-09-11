@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import NewsCard from './NewsCard'
+import "./News.css";
+import NewsCard from './NewsCard';
 
 import Container from 'react-bootstrap/Container';
 
@@ -13,7 +14,8 @@ export default class News extends Component {
 
     async componentDidMount() {
         let search_value = "tech";
-        let url = `http://newsapi.org/v2/top-headlines?q=${search_value}&sortBy=publishedAt&pageSize=5&page=1&apiKey=83c78226acad413893294f74e8011e96`;
+        let page_value = "1"    ;
+        let url = `http://newsapi.org/v2/top-headlines?country=us&q=${search_value}&sortBy=publishedAt&pageSize=5&page=${page_value}&apiKey=83c78226acad413893294f74e8011e96`;
 
         const response = await fetch(url);
         const data = await response.json();
@@ -32,7 +34,7 @@ export default class News extends Component {
                         publishedAt={article.publishedAt}
                         publisher={article.source.name}
                     />
-                    ))};
+                    ))}
                 </div>
                 
             );
@@ -40,7 +42,7 @@ export default class News extends Component {
         else {
             return (
                 <div className="news mt-5">
-                    <h3 className="mx-auto">Loading...</h3>
+                     <div class="loader mx-auto"></div> 
                 </div>  
             );
         }
