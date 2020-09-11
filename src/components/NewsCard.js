@@ -21,7 +21,7 @@ export default class NewsCard extends Component {
                             <a href={this.props.url}>{this.props.title}</a>
                         </Card.Title>
                         
-                        <h5><span class="badge publisher">{this.props.publisher}</span></h5>
+                        <h5><span className="badge publisher">{this.props.publisher}</span></h5>
                                                 
                     </Col>
 
