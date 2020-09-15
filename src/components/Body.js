@@ -45,7 +45,7 @@ export default class Body extends Component {
         this.setState({
             page: this.state.page + 1,
         });
-        console.log(this.state.page)
+
         this.componentDidMount()
     }
 
