@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DefaultThumb from './defaultThumb.png'
+import DefaultThumb from './media/defaultThumb.png'
 import NewsCard from './NewsCard';
 import './News.css'
 

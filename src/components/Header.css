@@ -4,14 +4,3 @@ header {
     font-weight: 100;
   }
 
-
-/* Vector */
-
-position: absolute;
-left: 13.12%;
-right: 84.86%;
-top: 5.61%;
-bottom: 91.09%;
-
-background: #FFFFFF;
-transform: matrix(-1, 0, 0, 1, 0, 0);

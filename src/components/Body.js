@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import './Body.css';
 import News from './News'
+import UpToButton from './UpToButton'
 
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -21,6 +22,7 @@ export default class Body extends Component {
             sortBy: "publishedAt",
             pageSize: 5,
             page: 1,
+            scrolling: false,
         }
 
         this.handleEvent = this.handleEvent.bind(this);
@@ -28,20 +30,44 @@ export default class Body extends Component {
     }
 
     componentDidMount() {
-        let url = `http://newsapi.org/v2/top-headlines?country=us&q=${this.state.search_value}&sortBy=${this.state.sortBy}&pageSize=${this.state.pageSize.toString()}&page=${this.state.page.toString()}&apiKey=83c78226acad413893294f74e8011e96`
+        let url = `http://newsapi.org/v2/top-headlines?country=br&q=${this.state.search_value}&sortBy=${this.state.sortBy}&pageSize=${this.state.pageSize.toString()}&page=${this.state.page.toString()}&apiKey=83c78226acad413893294f74e8011e96`
         axios.get(url)
             .then(response => {
                 this.setState({ 
-                    articles: response.data.articles,
-                    isLoaded: true 
+                    articles: this.state.articles.concat((response.data.articles).filter((item) => this.state.articles.indexOf(item) < 0)),
+                    isLoaded: true,
+                    scrolling: false,
                 });
             })
+
+        window.addEventListener('scroll', (e) => {
+            this.handleScroll(e)
+        })
     }
+
+    handleScroll = (e) => {
+        const {scrolling, pageSize, page} = this.state
+        console.log(scrolling)
+
+        if (scrolling) return
+
+        if (pageSize <= page) return
+
+        const lastNews = document.querySelector('.news .card:last-child')
+        const lastNewsOffset = lastNews.offsetTop + lastNews.clientHeight
+        const pageOffset = window.pageYOffset + window.innerHeight
+        let bottomOffset = 20
+
+        if (pageOffset > lastNewsOffset - bottomOffset) this.nextPage()
+
+    }
+
 
     handleEvent = (e) => {
         const value = e.target.value;
         this.setState({
           search_value: value,
+          articles: [],
         });
 
         this.componentDidMount()
@@ -49,23 +75,15 @@ export default class Body extends Component {
 
 
     nextPage() {
-        this.setState({ page: this.state.page+1 });
+        this.setState({ page: this.state.page+1, scrolling: true });
 
-        let url = `http://newsapi.org/v2/top-headlines?country=us&q=${this.state.search_value}&sortBy=${this.state.sortBy}&pageSize=${this.state.pageSize}&page=${this.state.page.toString()}&apiKey=83c78226acad413893294f74e8011e96`
-        axios.get(url)
-            .then(response => {
-                this.setState({
-                    articles: this.state.articles.concat((response.data.articles).filter((item) => this.state.articles.indexOf(item) < 0)),
-                    isLoaded: true 
-                });
-            })
-        
+        this.componentDidMount()    
     }
 
 
     render() {
         return (
-            <div className="search">
+            <div className="search mt-n4">
                 <Container>
                     <div className="searchBar">
                         <InputGroup size="lg">
@@ -73,8 +91,11 @@ export default class Body extends Component {
                         </InputGroup>
                     </div>
 
+                    <div className='upTo hvr-grow'>
+                        <UpToButton />
+                    </div>
+
                     <News isLoaded={this.state.isLoaded} articles={this.state.articles} />
-                    <button type="button" onClick={this.nextPage}>Next</button>
                 </Container>
                 
             </div>

@@ -26,7 +26,6 @@ export default class NewsCard extends Component {
                     </Col>
 
                     <Col md={2} className="date m-auto">
-                        
                         <Card.Text>
                             <Moment format="DD/MM/YYYY" date={this.props.publishedAt} />
                         </Card.Text>
