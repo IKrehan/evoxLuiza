@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import "./News.css";
 import DefaultThumb from './defaultThumb.png'
 import NewsCard from './NewsCard';
+import './News.css'
 
 
 export default class News extends Component {
@@ -13,6 +13,7 @@ export default class News extends Component {
                         (article.urlToImage)
                             ?
                             <NewsCard 
+                            key={article.id}
                             title={article.title} 
                             urlToImage={article.urlToImage} 
                             url={article.url}
@@ -22,6 +23,7 @@ export default class News extends Component {
 
                             :
                             <NewsCard 
+                            key={article.id}
                             title={article.title} 
                             urlToImage={DefaultThumb}
                             url={article.url}
