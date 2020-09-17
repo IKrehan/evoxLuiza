@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import './Body.css';
+import searchIcon from './media/searchIcon.svg'
 import News from './News'
 import UpToButton from './UpToButton'
 
@@ -85,9 +86,10 @@ export default class Body extends Component {
         return (
             <div className="search mt-n4">
                 <Container>
-                    <div className="searchBar">
+                    <div className="searchBar rounded">
                         <InputGroup size="lg">
-                            <FormControl className="searchInput" placeholder="Try Guardian" onChange={this.handleEvent} />
+                            <img className="m-3" src={searchIcon} alt=""/>
+                            <FormControl className="searchInput my-auto" placeholder="Try Guardian" onChange={this.handleEvent} />
                         </InputGroup>
                     </div>
 
