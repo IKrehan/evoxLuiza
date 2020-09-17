@@ -48,7 +48,6 @@ export default class Body extends Component {
 
     handleScroll = (e) => {
         const {scrolling, pageSize, page} = this.state
-        console.log(scrolling)
 
         if (scrolling) return
 

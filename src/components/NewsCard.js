@@ -18,7 +18,7 @@ export default class NewsCard extends Component {
 
                     <Col md={6} className="my-auto"> 
                         <Card.Title className="title">
-                            <a href={this.props.url}>{this.props.title}</a>
+                            <a target="_newtab" href={this.props.url}>{this.props.title}</a>
                         </Card.Title>
                         
                         <h5><span className="badge publisher">{this.props.publisher}</span></h5>

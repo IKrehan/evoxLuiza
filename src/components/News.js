@@ -9,11 +9,11 @@ export default class News extends Component {
         if (this.props.isLoaded) {
             return (
                 <div className="news mt-5">
-                    {this.props.articles.map(article => (
+                    {this.props.articles.map((article, index) => (
                         (article.urlToImage)
                             ?
                             <NewsCard 
-                            key={article.id}
+                            key={index}
                             title={article.title} 
                             urlToImage={article.urlToImage} 
                             url={article.url}
