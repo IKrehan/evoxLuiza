@@ -84,8 +84,7 @@ export default class Body extends Component {
 
     render() {
         return (
-            <div className="search mt-n4">
-                <Container>
+                <Container className="search mt-n4">
                     <div className="searchBar rounded">
                         <InputGroup size="lg">
                             <img className="m-3" src={searchIcon} alt=""/>
@@ -93,15 +92,9 @@ export default class Body extends Component {
                         </InputGroup>
                     </div>
 
-                    <div className='upTo hvr-grow'>
-                        <UpToButton />
-                    </div>
-
+                    <UpToButton />
                     <News isLoaded={this.state.isLoaded} articles={this.state.articles} />
                 </Container>
-                
-            </div>
-            
         );
     }
 }

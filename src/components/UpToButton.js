@@ -31,7 +31,7 @@ export default class UpToButton extends Component {
 
     render() {
         return (
-            <div className='btn-box'>
+            <div className='btn-box upTo hvr-grow'>
                 <FontAwesomeIcon cursor='pointer' onClick={this.topFunction} id='upButton' icon={faArrowCircleUp} />
             </div>
         );
