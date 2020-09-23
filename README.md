@@ -5,7 +5,7 @@
 
 
 ## Demo
-Aqui uma demo em funcionamento : [https://ikrehan.github.io/Challenge-evoxNews/](https://ikrehan.github.io/Challenge-evoxNews/)
+Aqui uma demo em funcionamento : [https://ikrehan.github.io/evoxNews/](https://ikrehan.github.io/evoxNews/)
 
 _Obs: Para a visualização é necessário a desabilitação do CORS, é possível usar algumas extensões do navegador para isso._
 
