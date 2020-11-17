@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import axios from 'axios'
 
-import './Body.css';
-import searchIcon from './media/searchIcon.svg'
-import News from './News'
-import UpToButton from './UpToButton'
+import './HomePage.css';
+import searchIcon from '../components/media/searchIcon.svg';
+import Feed from '../components/Feed/Feed';
+import UpToButton from '../components/UpToButton/UpToButton';
+import Header from '../components/Header/Header';
 
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -83,6 +84,8 @@ export default class Body extends Component {
 
     render() {
         return (
+            <>
+                <Header />
                 <Container className="search mt-n4">
                     <div className="searchBar rounded">
                         <InputGroup size="lg">
@@ -92,8 +95,9 @@ export default class Body extends Component {
                     </div>
 
                     <UpToButton />
-                    <News isLoaded={this.state.isLoaded} articles={this.state.articles} />
+                    <Feed isLoaded={this.state.isLoaded} articles={this.state.articles} />
                 </Container>
+            </>
         );
     }
 }

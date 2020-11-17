@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DefaultThumb from './media/defaultThumb.png'
-import NewsCard from './NewsCard';
-import './News.css'
+import DefaultThumb from '../media/defaultThumb.png'
+import NewsCard from '../NewsCard/NewsCard';
+import './Feed.css'
 
 
-export default class News extends Component {
+export default class Feed extends Component {
     render() {
         if (this.props.isLoaded) {
             return (
