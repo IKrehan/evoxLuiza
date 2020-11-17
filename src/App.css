@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f1f5;
+}
+
+body {
+  font-family: 'Roboto', sans-serif  !important;
 }
 
 .App {
   background-color: #f0f1f5;
-}
+} 
