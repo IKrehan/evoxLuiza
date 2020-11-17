@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 import './HomePage.css';
-import searchIcon from '../components/media/searchIcon.svg';
-import Feed from '../components/Feed/Feed';
-import UpToButton from '../components/UpToButton/UpToButton';
-import Header from '../components/Header/Header';
+import searchIcon from '../../components/media/searchIcon.svg';
+import Feed from '../../components/Feed/Feed';
+import UpToButton from '../../components/UpToButton/UpToButton';
+import Header from '../../components/Header/Header';
 
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
