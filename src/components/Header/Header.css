@@ -1,6 +1,18 @@
 header {
-    background-color: #3688D3;
+    background-color: #1563AB;
     color: white;
     font-weight: 100;
-  }
+}
 
+.header-container {
+  display: inline-block;
+}
+
+.active {
+  color: rgba(246, 248, 252, 0.6) !important;
+  border-bottom: 0px !important;
+}
+
+.navlink {
+  border-bottom: 2px solid #cba647;
+}
