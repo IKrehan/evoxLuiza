@@ -4,16 +4,13 @@ import './UptoButton.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
 
-export default class UpToButton extends Component {
-    constructor(props) {
-        super();
+const UpToButton = () => {
+    
+    window.addEventListener('scroll', (e) => {
+        scrollFunction(e)
+    })
 
-        window.addEventListener('scroll', (e) => {
-            this.scrollFunction(e)
-        })
-    }
-
-    scrollFunction = (e) => {
+    const scrollFunction = (e) => {
         const upButton = document.getElementById("upButton")
 
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -23,16 +20,16 @@ export default class UpToButton extends Component {
         }
     }
 
-    topFunction() {
+    const topFunction = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
 
-    render() {
-        return (
-            <div className='btn-box upTo hvr-grow'>
-                <FontAwesomeIcon cursor='pointer' onClick={this.topFunction} id='upButton' icon={faArrowCircleUp} />
-            </div>
-        );
-    }
+    return (
+        <div className='btn-box upTo hvr-grow'>
+            <FontAwesomeIcon cursor='pointer' onClick={topFunction} id='upButton' icon={faArrowCircleUp} />
+        </div>
+    );
 }
+
+export default UpToButton;

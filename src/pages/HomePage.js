@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import axios from 'axios'
 
@@ -13,13 +13,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 
 
-export default class Body extends Component {
+ const HomePage = (props) => {
 
-    //title, urlToImage, url, price
-    constructor(props) {
-        super();
-        this.state = {
-            articles: [
+        const [articles, setArticles] = useState([
                 {
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
@@ -61,27 +57,25 @@ export default class Body extends Component {
                     url: "",
                     price: 300,
                 },
-            ],
-        }
-    }
+            ])
 
 
-    render() {
-        return (
-            <>
-                <Header />
-                <Container className="search mt-n4">
-                    <div className="searchBar rounded">
-                        <InputGroup size="lg">
-                            <img className="m-3" src={searchIcon} alt=""/>
-                            <FormControl className="searchInput my-auto" placeholder="Try Guardian" onChange={this.handleEvent} />
-                        </InputGroup>
-                    </div>
+    return (
+        <>
+            <Header />
+            <Container className="search mt-n4">
+                <div className="searchBar rounded">
+                    <InputGroup size="lg">
+                        <img className="m-3" src={searchIcon} alt=""/>
+                        <FormControl className="searchInput my-auto" placeholder="Try Guardian" onChange={null} />
+                    </InputGroup>
+                </div>
 
-                    <UpToButton />
-                    <Feed isLoaded={this.state.isLoaded} articles={this.state.articles} />
-                </Container>
-            </>
-        );
-    }
+                <UpToButton />
+                <Feed isLoaded={true} articles={articles} />
+            </Container>
+        </>
+    );
 }
+
+export default HomePage;
