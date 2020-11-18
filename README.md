@@ -1,6 +1,7 @@
-# EvoxLuiza 📄
+# EvoxLuiza 🛒
 
-  Uma aplicação web consumindo a NewsAPI.
+  Client de um e-commerce desenvolvido em ReacJs e NodeJs
+  API: [https://github.com/IKrehan/evoxLuiza-API](https://github.com/IKrehan/evoxLuiza-API)
 
 
 ## Demo
