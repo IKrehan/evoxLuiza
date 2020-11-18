@@ -16,7 +16,7 @@ a {
     font-weight: bold;
 }
 
-.hvr-grow {
+.hvr-card {
     display: inline-block;
     vertical-align: middle;
     transform: translateZ(0);
@@ -27,8 +27,8 @@ a {
     transition-property: transform;
 }
 
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.05);
+.hvr-card:hover,
+.hvr-card:focus,
+.hvr-card:active {
+    transform: scale(1.04);
 }

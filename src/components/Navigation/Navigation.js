@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Nav from "react-bootstrap/Nav";
 
 
 
 const Navigation = () => {
+
     return (
-        <Nav activeKey="/">
+        <Nav activeKey={window.location.pathname}>
             <Nav.Item>
                 <Nav.Link href="/">
-                    <span className="navlink active">Listagem</span>
+                    <span className="navlink">Listagem</span>
                 </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link eventKey="add">
+                <Nav.Link href="/add">
                     <span className="navlink">Adicionar Produto</span>
-                    </Nav.Link>
+                </Nav.Link>
             </Nav.Item>
         </Nav>
     );

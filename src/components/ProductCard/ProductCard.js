@@ -6,8 +6,8 @@ import Card from 'react-bootstrap/Card';
 // props: title, urlToImage, url, publisher, publishedAt
 const ProductCard = (props) => {
     return (
-        <a href={props.url}>
-            <Card className="my-4 hvr-grow">
+        <a href={props.key}>
+            <Card className="my-4 hvr-card">
                 <div className="m-4">
                     <Card.Img src={props.urlToImage} />
                 </div>
@@ -17,7 +17,7 @@ const ProductCard = (props) => {
                 </Card.Title>
 
                 <Card.Title className="mx-auto mt-n4">
-                    <h4 className="price m-3">R$ {props.price},00</h4>
+                    <h4 className="price m-3">R$ {props.price.toFixed(2).replace('.', ',')}</h4>
                 </Card.Title>
             </Card>
         </a>

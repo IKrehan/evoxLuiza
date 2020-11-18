@@ -15,8 +15,9 @@ import FormControl from 'react-bootstrap/FormControl';
 
  const HomePage = (props) => {
 
-        const [articles, setArticles] = useState([
+        const [products, setproducts] = useState([
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -24,6 +25,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 },
 
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -31,6 +33,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 },
 
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -38,6 +41,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 },
 
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -45,6 +49,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 },
 
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -52,6 +57,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 },
                 
                 {
+                    id: 1,
                     title: "Cadeira Gamer Charles v.1234",
                     urlToImage: "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
                     url: "",
@@ -72,7 +78,7 @@ import FormControl from 'react-bootstrap/FormControl';
                 </div>
 
                 <UpToButton />
-                <Feed isLoaded={true} articles={articles} />
+                <Feed isLoaded={true} products={products} />
             </Container>
         </>
     );

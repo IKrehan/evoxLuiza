@@ -8,11 +8,12 @@ header {
   display: inline-block;
 }
 
-.active {
-  color: rgba(246, 248, 252, 0.6) !important;
+.navlink {
+  color: rgba(246, 248, 252, 0.6);
   border-bottom: 0px !important;
 }
 
-.navlink {
-  border-bottom: 2px solid #cba647;
+.active span {
+  color: #fff;
+  border-bottom: 2px solid #cba647 !important;
 }

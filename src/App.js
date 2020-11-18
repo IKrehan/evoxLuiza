@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter} from 'react-router-dom';
 
-import HomePage from './pages/HomePage/HomePage'
-import ProductForm from './pages/ProductForm/ProductForm'
+import Routes from './Routes'
+
 
 function App() {
   return (
     <div className="App">
-      <ProductForm />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </div>
 
   );

@@ -10,16 +10,17 @@ import Col from 'react-bootstrap/Col';
 const Feed = (props) => {
     return (
         <Row className="products my-3">
-            {props.articles.map((article, index) => (
-                (article.urlToImage)
+            {props.products.map((product, index) => (
+                (product.urlToImage)
                     ?
                     <Col md={3}>
                         <ProductCard 
                             key={index}
-                            title={article.title} 
-                            urlToImage={article.urlToImage} 
-                            url={article.url}
-                            price={article.price}
+                            id={product.id}
+                            title={product.title} 
+                            urlToImage={product.urlToImage} 
+                            url={product.url}
+                            price={product.price}
                         />
                     </Col>
 
@@ -27,10 +28,11 @@ const Feed = (props) => {
                     <Col md={3}>
                         <ProductCard 
                             key={index}
-                            title={article.title} 
+                            id={product.id}
+                            title={product.title} 
                             urlToImage={DefaultThumb}
-                            url={article.url}
-                            price={article.price}
+                            url={product.url}
+                            price={product.price}
                         />
                     </Col>
             ))}
