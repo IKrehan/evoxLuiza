@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DefaultThumb from '../media/defaultThumb.png'
 import ProductCard from '../ProductCard/ProductCard';
 import './Feed.css'
