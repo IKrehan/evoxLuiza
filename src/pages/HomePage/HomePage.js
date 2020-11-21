@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -13,61 +13,22 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 
 const HomePage = (props) => {
-  const [products, setproducts] = useState([
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
+  const [products, setProducts] = useState([]);
 
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .get("http://localhost:5000/product")
+        .then(function(response) {
+        setProducts(response.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+    fetchData();
+  }, []);
 
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
-
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
-
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
-
-    {
-      id: 1,
-      title: "Cadeira Gamer Charles v.1234",
-      urlToImage:
-        "https://images.tcdn.com.br/img/img_prod/581679/cadeira_gamer_eaglex_pro_amarelo_1213_2_20191010105539.jpg",
-      url: "",
-      price: 300,
-    },
-  ]);
 
   return (
     <>

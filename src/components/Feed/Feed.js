@@ -10,13 +10,13 @@ const Feed = (props) => {
   return (
     <Row className="products my-3">
       {props.products.map((product, index) =>
-        product.urlToImage ? (
+        product.url_image ? (
           <Col md={3}>
             <ProductCard
               key={index}
               id={product.id}
-              title={product.title}
-              urlToImage={product.urlToImage}
+              name={product.name}
+              url_image={product.url_image}
               url={product.url}
               price={product.price}
             />
@@ -26,8 +26,8 @@ const Feed = (props) => {
             <ProductCard
               key={index}
               id={product.id}
-              title={product.title}
-              urlToImage={DefaultThumb}
+              name={product.name}
+              url_image={DefaultThumb}
               url={product.url}
               price={product.price}
             />

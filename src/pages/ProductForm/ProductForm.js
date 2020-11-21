@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams, Redirect  } from 'react-router-dom';
 
 import axios from "axios";
 
@@ -12,7 +13,18 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const HomePage = (props) => {
+
+const ProductForm = (props) => {
+
+  let { id } = useParams();
+  if (Number(id) === parseInt(id, 10)) {
+    console.log("Produto ", parseInt(id))
+  } else if (id === "add") {
+    console.log("Adicionar Produto")
+  } else {
+    return <Redirect to='/produto/add'  />
+  }
+
   return (
     <>
       <Header />
@@ -30,12 +42,12 @@ const HomePage = (props) => {
             <Col md={8}>
               <Form.Group controlId="formProductName">
                 <Form.Label>Nome do Produto</Form.Label>
-                <Form.Control size="lg" type="email" />
+                <Form.Control size="lg" type="text" />
               </Form.Group>
 
               <Form.Group controlId="formProductPrice">
                 <Form.Label>Preço do Produto</Form.Label>
-                <Form.Control size="lg" type="int" />
+                <Form.Control size="lg" type="number" />
               </Form.Group>
 
               <div className="d-flex justify-content-end">
@@ -56,4 +68,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default ProductForm;
