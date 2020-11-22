@@ -12,12 +12,18 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
+
 
 
 const ProductForm = (props) => {
   const [readOnly, setReadOnly] = useState(false)
   const [productName, setProductName] = useState('')
   const [productPrice, setProductPrice] = useState('')
+  const [productImage, setProductImage] = useState('')
+  const [show, setShow] = useState(false);
+
+
   let { id } = useParams();
   let idIsNumber = Number(id) === parseInt(id, 10);
 
@@ -35,6 +41,7 @@ const ProductForm = (props) => {
         .then(function(response) {
           setProductName(response.data.name);
           setProductPrice(response.data.price);
+          setProductImage(response.data.url_image);
         })
         .catch(function(error) {
           console.log(error);
@@ -56,26 +63,34 @@ const ProductForm = (props) => {
       "name": productName,
       "price": productPrice,
       "url_image": null
+    })
+    .then((response) => {
+      setProductName(response.data.name);
+      setProductPrice(response.data.price);
+      setProductImage(response.data.image);
+      editMode();
     });
-    props.history.push('/');
   }
 
   const editMode = () => {
     setReadOnly(!readOnly);
   }
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <Header />
       <Container className="">
-        <h1 className="my-5">Adicione um produto</h1>
+        <h1 className="my-5">{idIsNumber ? `Produto ${id}` : "Adicione um produto"}</h1>
 
         <div className="d-flex justify-content-end">
           <Button className="m-2 float-right" variant="primary" type="button" onClick={editMode} hidden={!readOnly}>
             <span className="mx-5">Editar Produto</span>
           </Button>
 
-          <Button className="m-2 float-right" variant="danger" type="button" onClick={deleteProduct} hidden={!readOnly}>
+          <Button className="m-2 float-right" variant="danger" type="button" onClick={handleShow} hidden={!readOnly}>
             <span className="mx-5">Deletar Produto</span>
           </Button>
         </div>
@@ -85,8 +100,8 @@ const ProductForm = (props) => {
           <fieldset disabled={readOnly}>
           <Row>
             <Col className="p-4 mt-n4" md={4}>
-              <div className="inputBox">
-                <Dropzone />
+              <div className="inputBox p-3">
+                <Dropzone image={productImage} />
               </div>
             </Col>
 
@@ -111,12 +126,41 @@ const ProductForm = (props) => {
                 >
                   <span className="mx-5">{idIsNumber ? "Editar" : "Adicionar"}</span>
                 </Button>
+
+                <Button
+                  size="lg"
+                  className="m-3"
+                  variant="danger"
+                  type="button"
+                  hidden={readOnly || !idIsNumber}
+                  onClick={() => {
+                    editMode();
+                    completeFields();
+                  }}
+                >
+                  <span className="mx-5">Cancelar</span>
+                </Button>
               </div>
             </Col>
           </Row>
         </fieldset>
         </Form>
       </Container>
+
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Deletar Produto?</Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={deleteProduct}>
+            Deletar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

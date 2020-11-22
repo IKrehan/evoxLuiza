@@ -14,36 +14,55 @@ import FormControl from "react-bootstrap/FormControl";
 
 const HomePage = (props) => {
   const [products, setProducts] = useState([]);
+  const [searchValue, setSearchValue] = useState('')
+
+  async function fetchData(url) {
+    await axios
+      .get(url, {
+        "query": searchValue
+      })
+      .then(function(response) {
+        setProducts(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      await axios
-        .get("https://evoxluiza-api.herokuapp.com/product")
-        .then(function(response) {
-        setProducts(response.data);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
-    fetchData();
+    fetchData("https://evoxluiza-api.herokuapp.com/product");
   }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://evoxluiza-api.herokuapp.com/search", {"query": searchValue })
+      .then(function(response) {
+        setProducts(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    console.log(products)
+  }
 
 
   return (
     <>
       <Header />
       <Container className="search mt-n4">
-        <div className="searchBar rounded">
+        <form className="searchBar rounded" onSubmit={handleSearch}>
           <InputGroup size="lg">
             <img className="m-3" src={searchIcon} alt="" />
             <FormControl
               className="searchInput my-auto"
               placeholder="Try Guardian"
-              onChange={null}
+              value={searchValue}
+              onChange={e => {setSearchValue(e.target.value)}}
             />
           </InputGroup>
-        </div>
+          <button type="submit" hidden></button>
+        </form>
 
         <UpToButton />
         <Feed isLoaded={true} products={products} />
