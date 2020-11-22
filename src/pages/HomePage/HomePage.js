@@ -18,7 +18,7 @@ const HomePage = (props) => {
   useEffect(() => {
     async function fetchData() {
       await axios
-        .get("http://localhost:5000/product")
+        .get("https://evoxluiza-api.herokuapp.com/product")
         .then(function(response) {
         setProducts(response.data);
         })

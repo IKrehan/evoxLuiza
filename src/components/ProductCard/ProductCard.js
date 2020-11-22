@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 // props: title, url_image, url, publisher, publishedAt
 const ProductCard = (props) => {
   return (
-    <a href={"/edit/" + props.id}>
+    <a href={"/produto/" + props.id}>
       <Card className="my-4 hvr-card">
         <div className="m-4">
           <Card.Img src={props.url_image} />

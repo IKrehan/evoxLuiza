@@ -12,7 +12,7 @@ const Navigation = () => {
       </Nav.Item>
 
       <Nav.Item>
-        <Nav.Link href="/produto">
+        <Nav.Link href="/produto/add">
           <span className="navlink">Adicionar Produto</span>
         </Nav.Link>
       </Nav.Item>
