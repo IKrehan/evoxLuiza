@@ -6,7 +6,7 @@
 
 
 ## Demo
-Aqui uma demo em funcionamento : [https://ikrehan.github.io/evoxLuiza-client/](https://ikrehan.github.io/evoxLuiza-client/)
+Aqui uma demo em funcionamento : [https://evox-luiza.vercel.app](https://evox-luiza.vercel.app)
 
 
 ## Features
