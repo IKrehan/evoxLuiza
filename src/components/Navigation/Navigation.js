@@ -6,13 +6,13 @@ const Navigation = () => {
   return (
     <Nav activeKey={window.location.pathname}>
       <Nav.Item>
-        <Nav.Link href="/">
+        <Nav.Link href={process.env.PUBLIC_URL + "/"}>
           <span className="navlink">Listagem</span>
         </Nav.Link>
       </Nav.Item>
 
       <Nav.Item>
-        <Nav.Link href="/produto/add">
+        <Nav.Link href={process.env.PUBLIC_URL + "/produto/add"}>
           <span className="navlink">Adicionar Produto</span>
         </Nav.Link>
       </Nav.Item>
