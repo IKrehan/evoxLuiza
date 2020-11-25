@@ -8,7 +8,7 @@ import Routes from './Routes'
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes />
       </BrowserRouter>
     </div>
