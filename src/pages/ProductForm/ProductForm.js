@@ -28,14 +28,29 @@ const ProductForm = (props) => {
   let { id } = useParams();
   let idIsNumber = Number(id) === parseInt(id, 10);
 
+  const completeFields = async (product_id) => {
+    await axios.get("https://evoxluiza-api.herokuapp.com/product/" + product_id)
+        .then(function(response) {
+          setProductName(response.data.name);
+          setProductPrice(response.data.price);
+          setProductImage(response.data.url_image);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+  };
+  
+
   useEffect(() =>{
       if (idIsNumber) {
         setReadOnly(true);
-        completeFields();
+        completeFields(id);
+        
     } else if (id !== "add") {
       props.history.push('/produto/add');
     }
-  }, []);
+  }, [id, idIsNumber, props.history]);
+
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const url = "https://api.cloudinary.com/v1_1/krehan/image/upload";
@@ -47,19 +62,6 @@ const ProductForm = (props) => {
     const response = await axios.post(url, formData)
     setProductImage(response.data.secure_url);
   }, []);
-
- const completeFields = async () => {
-    await axios.get("https://evoxluiza-api.herokuapp.com/product/" + id)
-        .then(function(response) {
-          setProductName(response.data.name);
-          setProductPrice(response.data.price);
-          setProductImage(response.data.url_image);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-  };
-  
 
   const deleteProduct = () => {
     axios.delete("https://evoxluiza-api.herokuapp.com/product/" + id);
@@ -76,10 +78,9 @@ const ProductForm = (props) => {
       "url_image": productImage
     })
     .then((response) => {
-      setProductName(response.data.name);
-      setProductPrice(response.data.price);
-      setProductImage(response.data.image);
+      const urlProduct = "/produto/" + response.data.id;
       editMode();
+      props.history.push(urlProduct);
     });
   }
 
@@ -148,7 +149,7 @@ const ProductForm = (props) => {
                   hidden={readOnly || !idIsNumber}
                   onClick={() => {
                     editMode();
-                    completeFields();
+                    completeFields(id);
                   }}
                 >
                   <span className="mx-5">Cancelar</span>

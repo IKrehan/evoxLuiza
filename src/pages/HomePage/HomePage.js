@@ -16,22 +16,22 @@ const HomePage = (props) => {
   const [products, setProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('')
 
-  async function fetchData(url) {
-    await axios
-      .get(url, {
-        "query": searchValue
-      })
-      .then(function(response) {
-        setProducts(response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
-
   useEffect(() => {
+    async function fetchData(url) {
+      await axios
+        .get(url, {
+          "query": searchValue
+        })
+        .then(function(response) {
+          setProducts(response.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+    
     fetchData("https://evoxluiza-api.herokuapp.com/product");
-  }, []);
+  }, [searchValue]);
 
   const handleSearch = (e) => {
     e.preventDefault();

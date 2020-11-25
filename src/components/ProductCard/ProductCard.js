@@ -13,7 +13,7 @@ const ProductCard = (props) => {
         </div>
 
         <Card.Title className="title mx-auto p-3">
-          <h5>{props.name.substring(0, 35) + '...'}</h5>
+          <h5>{props.name.length >= 35 ? props.name.substring(0, 35) + '...' : props.name}</h5>
         </Card.Title>
 
         <Card.Title className="mx-auto mt-n4">
