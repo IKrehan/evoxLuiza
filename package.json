@@ -1,5 +1,5 @@
 {
-  "homepage": "http://IKrehan.github.io/evoxLuiza-client/",
+  "homepage": "https://evox-luiza.vercel.app",
   "name": "evox-luiza",
   "version": "0.1.0",
   "private": true,
@@ -24,8 +24,6 @@
     "save-dev": "0.0.1-security"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

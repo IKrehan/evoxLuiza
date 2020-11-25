@@ -45,7 +45,7 @@ const ProductForm = (props) => {
       if (idIsNumber) {
         setReadOnly(true);
         completeFields(id);
-    } else if (id !== "add") {
+      } else if (id !== "add") {
       props.history.push('/produto/add');
     }
   }, [id, idIsNumber, props.history]);
