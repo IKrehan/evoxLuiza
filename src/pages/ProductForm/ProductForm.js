@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, withRouter  } from 'react-router-dom';
 
 import axios from "axios";
@@ -18,10 +18,11 @@ import Modal from "react-bootstrap/Modal";
 
 const ProductForm = (props) => {
   const [readOnly, setReadOnly] = useState(false)
+  const [show, setShow] = useState(false);
+
   const [productName, setProductName] = useState('')
   const [productPrice, setProductPrice] = useState('')
   const [productImage, setProductImage] = useState('')
-  const [show, setShow] = useState(false);
 
 
   let { id } = useParams();
@@ -34,6 +35,17 @@ const ProductForm = (props) => {
     } else if (id !== "add") {
       props.history.push('/produto/add');
     }
+  }, []);
+
+  const onDrop = useCallback(async (acceptedFiles) => {
+    const url = "https://api.cloudinary.com/v1_1/krehan/image/upload";
+
+    const formData = new FormData();
+    formData.append("file", acceptedFiles[0]);
+    formData.append("upload_preset", "jscvjo53");
+
+    const response = await axios.post(url, formData)
+    setProductImage(response.data.secure_url);
   }, []);
 
  const completeFields = async () => {
@@ -54,15 +66,14 @@ const ProductForm = (props) => {
     props.history.push('/');
   }
 
-  const handleSubmit = (evt) => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+      
     let url = idIsNumber ? "https://evoxluiza-api.herokuapp.com/product/" + id : "https://evoxluiza-api.herokuapp.com/product"
-
-    evt.preventDefault();
     axios.post(url, {
       "name": productName,
       "price": productPrice,
-      "url_image": null
+      "url_image": productImage
     })
     .then((response) => {
       setProductName(response.data.name);
@@ -78,6 +89,7 @@ const ProductForm = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 
   return (
     <>
@@ -101,7 +113,8 @@ const ProductForm = (props) => {
           <Row>
             <Col className="p-4 mt-n4" md={4}>
               <div className="inputBox p-3">
-                <Dropzone image={productImage} />
+                <span id="fileError"></span>
+                <Dropzone image={productImage} onDrop={onDrop} />
               </div>
             </Col>
 

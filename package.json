@@ -1,6 +1,6 @@
 {
-  "homepage": "http://IKrehan.github.io/evoxLuiza-client",
-  "name": "evox-challenge",
+  "homepage": "https://ikrehan.github.io/evoxLuiza-client/",
+  "name": "evoxLuiza",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,14 +13,12 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
-    "cloudinary-react": "^1.6.8",
+    "crypto-js": "^4.0.0",
     "gh-pages": "^3.1.0",
-    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.4",
-    "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "save-dev": "0.0.1-security"
