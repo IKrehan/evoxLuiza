@@ -30,13 +30,13 @@ const HomePage = (props) => {
         });
     }
     
-    fetchData("https://evoxluiza-api.herokuapp.com/product");
+    fetchData("https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/product");
   }, [searchValue]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     axios
-      .post("https://evoxluiza-api.herokuapp.com/search", {"query": searchValue })
+      .post("https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/search", {"query": searchValue })
       .then(function(response) {
         setProducts(response.data);
       })

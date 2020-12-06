@@ -29,7 +29,7 @@ const ProductForm = (props) => {
   let idIsNumber = Number(id) === parseInt(id, 10);
 
   const completeFields = async (product_id) => {
-    await axios.get("https://evoxluiza-api.herokuapp.com/product/" + product_id)
+    await axios.get("https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/product/" + product_id)
         .then(function(response) {
           setProductName(response.data.name);
           setProductPrice(response.data.price);
@@ -63,14 +63,14 @@ const ProductForm = (props) => {
   }, []);
 
   const deleteProduct = () => {
-    axios.delete("https://evoxluiza-api.herokuapp.com/product/" + id);
+    axios.delete("https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/product/" + id);
     props.history.push('/');
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
       
-    let url = idIsNumber ? "https://evoxluiza-api.herokuapp.com/product/" + id : "https://evoxluiza-api.herokuapp.com/product"
+    let url = idIsNumber ? "https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/product/" + id : "https://cors-anywhere.herokuapp.com/evoxluiza-api.herokuapp.com/product"
     axios.post(url, {
       "name": productName,
       "price": productPrice,
